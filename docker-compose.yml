@@ -43,10 +43,12 @@ services:
       - "80:80"
       - "443:443"
       - "81:81"
+      - "8090:81"
     environment:
       DB_SQLITE_FILE: "/data/database.sqlite"
     volumes:
       - ./data:/data
+      - ./nginx/nginx.dev.conf:/data/nginx/custom/http_top.conf
       - ./letsencrypt:/etc/letsencrypt
     depends_on:
       - db
